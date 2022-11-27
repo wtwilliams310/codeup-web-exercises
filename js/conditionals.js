@@ -42,8 +42,8 @@
 // - `colors`: a list of the colors of the rainbow
 // - `randomColor`: contains a single random color value from the list (this
 //                  will contain a different color every time the page loads)
-var colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
-var randomColor = colors[Math.floor(Math.random() * colors.length)];
+let colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
+let randomColor = colors[Math.floor(Math.random() * colors.length)];
 /**
  * TODO:
  * Pass the `randomColor` variable to your 'analyzeColor' function and console.log the results.
@@ -186,7 +186,7 @@ var randomColor = colors[Math.floor(Math.random() * colors.length)];
  * price before the discount was, and what their price after the discount is.
  */
 // Generate a random number between 0 and 6
-var luckyNumber = Math.floor(Math.random() * 6);
+let luckyNumber = Math.floor(Math.random() * 6);
 
 // const calculateTotal = (number, totalBill) => {
 //     return (number === 1) ? totalBill * 0.90
@@ -270,7 +270,7 @@ var luckyNumber = Math.floor(Math.random() * 6);
 //     } else if (positiveEven) {
 //         alert ("Your number is even.")
 //         alert (alert100);
-//         alert ("Your number is postive.")
+//         alert ("Your number is positive.")
 //     } else if (notNumber){
 //         alert ("What you entered is not a number.")
 //     } else {
