@@ -43,6 +43,12 @@
 // 	}
 // }
 
+//Class solution:
+// for (let i = 1; i < 11; i++) {
+// 	let randomNumber = Math.floor(Math.random() * (200 - 20 + 1) + 20);
+//  let isEven = randomNumber % 2 === 0;
+//  let answer = `${randomNumber} is ${isEven ? 'even':'odd'};
+//  console.log(answer);
 
 //# 4
 // let n = 9;
@@ -55,6 +61,25 @@
 // }
 
 // console.log(string)
+
+//*****CLASS SOLUTION*******
+// for (let i = 0; i < 9; i++) {
+//     let number = i + 1;
+//     let result = number.toString();
+//     for (let j = 1; j <= i; j++) {
+//         result += number;
+//     }
+//     console.log(result)
+// }
+
+//******OR
+// for (let i = 0; i < 9; i++) {
+//     let answer = String(i + 1).repeat(i + 1);
+//     console.log(answer);
+// }
+
+
+
 
 
 //# 5
