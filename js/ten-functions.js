@@ -37,7 +37,7 @@ function isFalse(input) {
 
 //# 3
 function not(input) {
-    if (input == !typeof input)  {
+    if (input == !typeof input) {
         return true;
     } else if (input !== input) {
         return true;
@@ -82,7 +82,7 @@ function addOne(input) {
 // function addOne(input) {
 //     let number = parseFloat(input);
 //     return number + 1;
-}
+//}
 
 // console.log(addOne(0));                    // 1
 // console.log(addOne(2));                    // 3
@@ -100,9 +100,8 @@ function isEven(input) {
     let stringNumber = Number(input);
     if (typeof input === "boolean") {
         return false;
-    }
-        else {
-        if(stringNumber % 2 === 0) {
+    } else {
+        if (stringNumber % 2 === 0) {
             return true;
         } else {
             return false;
@@ -113,7 +112,7 @@ function isEven(input) {
 //Class Solution
 // function isEven(input) {
 //     return parseFloat(input % 2 === 0);
-}
+//}
 
 
 //  console.log(isEven(2));                   // true
