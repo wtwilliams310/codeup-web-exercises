@@ -372,16 +372,23 @@
 
 // console.log(returnLongString(arrStrings));
 
+//**** with for loop
 
+//function returnLongString(arr) {
+//let stringClump = '';
+//for (let i = 0; i < arr.length; i += 1) {
+// stringClump += arr[i];
+//  }
+// }
 
 //yellow
 // !! Write a function, returnArrSum, that takes in an array of values and returns the sum of all number elements !!
 
 //***USING (for-Loop)
 
-const array = [1, 2, 3, 4, 10];
+// const array = [1, 2, 3, 4, 10];
 
-let sum = 0;
+// let sum = 0;
 
 // function returnArrSum(arr) {
 //     for(let i = 0; i < arr.length; i += 1) {
@@ -398,6 +405,19 @@ let sum = 0;
 //     array.forEach(function(value) {
 //         sum += value;
 //     });
+//     return sum;
+
+// }
+
+// console.log(array);
+
+
+//USING (forEach arrow function)
+
+// function returnArrSum(arr) {
+//     array.forEach(value => {
+//         sum += value;
+//     });
 //     console.log(sum);
 
 // }
@@ -405,18 +425,28 @@ let sum = 0;
 // returnArrSum(array);
 
 
-//USING (forEach arrow function)
 
-function returnArrSum(arr) {
-    array.forEach(value => {
-        sum += value;
-    });
-    console.log(sum);
+//Bonus
 
-}
+// 1. Create an array of 10 foods. Write using a for loop, write logic that will log only the foods that start with a vowel. Write another solution using a forEach loop.
 
-returnArrSum(array);
+// const foods = [
+//     'tacos',
+//     'tortas',
+//     'eringles',
+//     'chips',
+//     'pringles',
+//     'apples',
+//     'eggs'
+//     ];
 
+// for (let i = 0; i < foods.length; i += 1) {
+//     let firstChar = foods[i][0];
+//     let vowels = ['a', 'e', 'i', 'o', 'u'];
+//     if (vowels.includes(firstChar)) {
+//         console.log(foods[i]);
+//     }
+// }
 
 
 </script>
