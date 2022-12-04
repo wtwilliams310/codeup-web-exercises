@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>DOM: Query and Modify</title>
+</head>
+<body>
+
+<h1 id="main-header">Hello World!</h1>
+<ul>
+    <li data-dbid="1">Item 1</li>
+    <li data-dbid="2">Item 2</li>
+    <li data-dbid="3">Item 3</li>
+    <li data-dbid="4">Item 4</li>
+    <li data-dbid="5">Item 5</li>
+</ul>
+<h2 id="sub-header">Hello Again.</h2>
+<p class="sub-paragraph">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+    ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+    aliquip ex ea commodo consequat. Duis aute irure dolor in
+    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+    culpa qui officia deserunt mollit anim id est laborum.
+</p>
+
+<script>
+    (function() {
+        "use strict";
+        // yellow TODO: Uncomment next line and get the main header element by id
+        let mainHeader = document.getElementById('main-header');
+       
+
+        // yellow TODO: Set inner html of mainHeader to "JavaScript is Cool"
+         mainHeader.innerHTML = 'JavaScript is Cool'
+        console.log(mainHeader);
+
+        // yellow TODO: Uncomment the next line and get the sub header element by id
+        let subHeader = document.getElementById('sub-header');
+        console.log(subHeader);
+
+        // yellow TODO: Set the text color of subHeader to blue
+        subHeader.style.color = 'blue';
+
+        // yellow TODO: Uncomment the next line and get all list items
+       
+        let listItems = document.getElementsByTagName('li');
+
+        for (let i = 0; i < listItems.length; i += 1) {
+            console.log(listItems[i]);
+        }
+
+        // yellow TODO: Set text color on every other list item to grey
+        
+        let listElements = document.getElementsByTagName('li');
+
+        for (let i = 0; i < listElements.length; i += 2) {
+            listElements[i].style.color = 'grey';
+        }
+        
+        // yellow TODO: Set text color of li with dbid = 1 to blue
+
+        document.querySelector('[data-dbid="1"').style.color = 'red';
+
+        // yellow TODO: Uncomment the next line and get all elements with class name sub-paragraph
+        // let subParagraphs = document.getElementsByClassName('sub-paragraph');
+
+        // for (var i = 0; i < subParagraphs.length; i++) {
+        //     subParagraphs[i];
+        //     console.log(subParagraphs);
+        // }
+
+        // yellow TODO: Change the text in the first sub paragraph to "Mission Accomplished!"
+
+        /* *Note-- innerHTML is a property of a DOM node and .getElementsByClassName returns a collection of nodes. I need to grab the node by it's index if I'm using gEBCN or gEBTagN:  getElementsByClassName('class')[0].innerHTML  ....
+
+        can also do this in for-loop as it iterates through every index if I need to change all the elements with the same class.*/
+
+        let subParagraphs = document.getElementsByClassName('sub-paragraph');
+
+        // for (var i = 0; i < subParagraphs.length; i++) {
+        //     subParagraphs[i].innerText = 'Mission Accomplished!'
+        //     console.log(subParagraphs);
+        // }
+
+        //or with single index change
+
+        subParagraphs[0].innerHTML = 'Mission Accomplished!!!!'
+
+    })();
+</script>
+
+
+</body></html>
