@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Register With Us</title>
+</head>
+<body>
+	<h1>Veridian Dynamics</h1>
+	<h2>Registration Page</h2>
+	<h3>Please fill out the requested information below:</h3>
+	<form method="POST" action="https://request-inspector.glitch.me/">
+		<label for="email">Email:</label>
+		<input type="text" name="email">
+		<br>
+
+		<label for="password">Password:</label>
+		<input type="password" name="password">
+		<br>
+
+		<label for="bio">Bio:</label><br>
+				<textarea name="bio" rows="5" cols="30"></textarea>
+			
+
+		<h3>How did you hear about us?</h3>
+			<label for="billboard">
+			billboard<input type="radio" name="hear_about_1" value="billboard">
+			</label>
+			<label for="radio advertisement">
+			radio advertisement<input type="radio" name="hear_about_2" value="radio advertisement">
+			</label>
+			<label for="internet">
+			internet<input type="radio" name="hear_about_3" value="internet">
+			</label>
+			<label for="other">
+			other<input type="radio" name="hear_about_4" value="other">
+			</label>
+
+		<h3>Which web browser are you currently using?</h3>
+		<label for="browser">
+			<select name="browser">
+				<option disabled selected value>-- select an option --</option>
+				<option value="Chrome">Chrome</option>
+				<option value="Safari">Safari</option>
+				<option value="Firefox">Firefox</option>
+				<option value="Microsoft Edge">Microsoft Edge</option>
+				<option value="other Edge">other Edge</option>
+			</select>
+		</label>
+		<br>
+
+		<input type="submit">
+
+
+	</form>
+</body>
+</html>
