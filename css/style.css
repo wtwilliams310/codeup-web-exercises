@@ -1,7 +1,7 @@
 .fancy-header {
 	color: hsl(81, 100%, 61%);
 	text-decoration: underline;
-	background: ;
+	/*background: ;*/
 }
 
 .header-container {
@@ -14,30 +14,34 @@
 	border-radius: 10px;
 }
 
+.page-wrapper {
+/*	display: ;*/
+	margin: auto;
+	padding-left: 20px;
+}
+
 h1 {
 	
 	
 }
-td {
-	border-right: ;
-	border-bottom: ;
-	border-top: ;
-}
+/*td {*/
+/*	border-right: ;*/
+/*	border-bottom: ;*/
+/*	border-top: ;*/
+/*}*/
 
 #top {
 	text-align: center;
 }
 
 body {
-/*	background-color: hsl(120, 0%, 43%);*/
-background-image: url('../img/bull-wall-street.jpg');
-background-repeat: no-repeat;
-background-size: cover;
+	background-color: hsl(120, 0%, 43%);
+	background-image: url('../img/bull-wall-street.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 
-h2 {
-	margin-bottom: 20px;
-}
+
 
 .list-header {
 	background:  hsl(0, 0%, 22%);
@@ -45,7 +49,10 @@ h2 {
 	width: 400px;
 	height: 50px;
 	border-radius: 10px;
+	align-items: center;
+	padding-left: 10px;
 }
+
 
 ul, ol {
 	background: hsl(0, 0%, 22%);
@@ -62,3 +69,59 @@ li {
 	color: hsl(81, 100%, 61%);
 
 }
+
+/*.image-container {*/
+/*	display: flex;*/
+	/*margin-top: 50px;
+	background: hsl(0, 0%, 22%);
+	padding-top: 30px;
+	padding-bottom: 30px;
+	padding-left: 30px;
+	padding-right: 30px;
+	width: 1010px;
+	border-radius: 20px;*/
+/*	justify-content: center;*/
+/*	height: 1000px;*/
+/*}*/
+
+.image-container {
+	display: flex;
+/*	flex-direction: column;*/
+	width: 1400px;
+	height: 800px;
+	background-color: hsl(0, 0%, 22%);
+/*	flex-grow: 1;*/
+	justify-content: center;
+	margin-top: 50px;
+}
+
+.column1 {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background: lightgray;
+}
+
+img {
+	display: block;
+	max-width: 100%;
+	border-radius: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
