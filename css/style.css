@@ -1,12 +1,64 @@
 .fancy-header {
-	color: purple;
+	color: hsl(81, 100%, 61%);
 	text-decoration: underline;
+	background: ;
 }
 
+.header-container {
+	background:  hsl(0, 0%, 22%);
+	display: flex;
+	width: 800px;
+	margin: auto;
+	justify-content: center;
+	margin-top: 30px;
+	border-radius: 10px;
+}
 
+h1 {
+	
+	
+}
 td {
 	border-right: ;
 	border-bottom: ;
 	border-top: ;
 }
 
+#top {
+	text-align: center;
+}
+
+body {
+/*	background-color: hsl(120, 0%, 43%);*/
+background-image: url('../img/bull-wall-street.jpg');
+background-repeat: no-repeat;
+background-size: cover;
+}
+
+h2 {
+	margin-bottom: 20px;
+}
+
+.list-header {
+	background:  hsl(0, 0%, 22%);
+	display: flex;
+	width: 400px;
+	height: 50px;
+	border-radius: 10px;
+}
+
+ul, ol {
+	background: hsl(0, 0%, 22%);
+	padding: 20px;
+	width: 200px;
+	border-radius: 10px;
+
+
+}
+
+li {
+	background: hsl(0, 0%, 22%);
+	margin: 5px;
+	color: hsl(81, 100%, 61%);
+
+}
