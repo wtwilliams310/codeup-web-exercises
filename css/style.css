@@ -1,8 +1,10 @@
+
+
 .fancy-header {
 	color: hsl(81, 100%, 61%);
 	text-decoration: underline;
-	/*background: ;*/
 }
+
 
 .header-container {
 	background:  hsl(0, 0%, 22%);
@@ -12,23 +14,35 @@
 	justify-content: center;
 	margin-top: 30px;
 	border-radius: 10px;
+	box-shadow: 5px 5px 5px 5px #888;
+}
+
+.main {
+	padding-top: 10px;
+	padding-left: 30px;
+	max-width: 100%;
+}
+
+p {
+	color: white;
+	text-align: center;
 }
 
 .page-wrapper {
-/*	display: ;*/
-	margin: auto;
+	position: static;
+/*  margin: auto;*/
+  margin-left: 100px;
+  margin-right: 100px;
+  max-width:100%;
+/*  height:800px;*/
+/*position: fixed;*/
 	padding-left: 20px;
+	background-image: url('../img/bull-wall-street.jpg');
+	background-repeat: no-repeat;
+	background-size: center;
+	background-attachment: fixed;
+	overflow: visible;
 }
-
-h1 {
-	
-	
-}
-/*td {*/
-/*	border-right: ;*/
-/*	border-bottom: ;*/
-/*	border-top: ;*/
-/*}*/
 
 #top {
 	text-align: center;
@@ -36,11 +50,11 @@ h1 {
 
 body {
 	background-color: hsl(120, 0%, 43%);
-	background-image: url('../img/bull-wall-street.jpg');
+	/*background-image: url('../img/bull-wall-street.jpg');
 	background-repeat: no-repeat;
-	background-size: cover;
+	background-size: contain;
+	background-attachment: fixed;*/
 }
-
 
 
 .list-header {
@@ -51,6 +65,7 @@ body {
 	border-radius: 10px;
 	align-items: center;
 	padding-left: 10px;
+	box-shadow: 5px 5px 5px 5px #888;
 }
 
 
@@ -59,8 +74,7 @@ ul, ol {
 	padding: 20px;
 	width: 200px;
 	border-radius: 10px;
-
-
+	box-shadow: 5px 5px 5px 5px #888;
 }
 
 li {
@@ -70,47 +84,66 @@ li {
 
 }
 
-/*.image-container {*/
-/*	display: flex;*/
-	/*margin-top: 50px;
-	background: hsl(0, 0%, 22%);
-	padding-top: 30px;
-	padding-bottom: 30px;
-	padding-left: 30px;
-	padding-right: 30px;
-	width: 1010px;
-	border-radius: 20px;*/
-/*	justify-content: center;*/
-/*	height: 1000px;*/
-/*}*/
 
 .image-container {
 	display: flex;
-/*	flex-direction: column;*/
-	width: 1400px;
-	height: 800px;
+	flex-direction: column;
+	width: 1100px;
+	height: 700px;
 	background-color: hsl(0, 0%, 22%);
-/*	flex-grow: 1;*/
-	justify-content: center;
 	margin-top: 50px;
+	margin-bottom: 50px;
+	justify-content: space-between;
+	padding-top: 50px;
+	padding-bottom: 50px;
+	border-radius: 30px;
+	box-shadow: 5px 5px 5px 5px #888;
+
 }
 
 .column1 {
 	display: flex;
-	flex-direction: column;
-	align-items: center;
-	background: lightgray;
+	flex-direction: row;
+	justify-content: space-around;
+}
+
+.column2 {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
 }
 
 img {
-	display: block;
 	max-width: 100%;
-	border-radius: 20px;
+	max-height: 100%;
+	border-radius: 30px;
+	border-style: solid;
+	border-color: darkgray;
+
 }
 
+table {
+	background: hsl(0, 0%, 22%);
+	margin-top: 10px;
+	padding: 10px;
+	border-radius: 10px;
+	box-shadow: 5px 5px 5px 5px #888;
 
+}
 
+td {
+	color: hsl(81, 100%, 61%);
+}
 
+th {
+	background-color: hsl(81, 100%, 61%);
+	text-align: left;
+	padding-right: 84px;
+}
+
+a {
+	color: hsl(81, 100%, 61%);
+}
 
 
 
