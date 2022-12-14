@@ -6,6 +6,20 @@ body, html {
     font-family: Arial, Ubuntu, sans-serif;
 }
 
+:root {
+    /*background-color    */
+    --color-bg-info: hsl(219, 100%, 90%);
+    --color-bg-success: hsl(139, 60%, 88%);
+    --color-bg-warning: hsl(59, 90%, 89%);
+    --color-bg-error: hsl(354, 77%, 90%);
+
+    /*text-color    */
+    --color-text-info: hsl(246, 60%, 35%);
+    --color-text-success: hsl(144, 72%, 24%);
+    --color-text-warning: hsl(50, 66%, 35%);
+    --color-text-error: hsl(344, 99%, 23%);
+}
+
 .message {
     box-sizing: border-box;
     margin: 1em 0em;
@@ -21,26 +35,26 @@ body, html {
 }
 
 .message-info {
-    background-color: hsl(219, 100%, 90%);
-    color: hsl(246, 60%, 35%);
+    background-color: var(--color-bg-info);
+    color: var(--color-text-info);
 }
 
 .message-success {
-    background-color: hsl(139, 60%, 88%);
-    color: hsl(144, 72%, 24%);
+    background-color: var(--color-bg-success);
+    color: var(--color-text-success);
 
 }
 
 .message-warning {
-    background-color: hsl(59, 90%, 89%);
-    color: hsl(50, 66%, 35%);
+    background-color: var(--color-bg-warning);
+    color: var(--color-text-warning);
 
     
 }
 
 .message-error {
-    background-color: hsl(354, 77%, 90%);
-    color: hsl(344, 99%, 23%);
+    background-color: var(--color-bg-error);
+    color: var(--color-text-error);
 
     
 }
