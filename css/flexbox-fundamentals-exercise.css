@@ -34,19 +34,30 @@ h2, h3 {
     padding: 1em;
     margin: 0 auto;
     /* enter needed declarations here */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 
 section {
     /* enter needed declarations here */
+/*    display: flex;*/
+    display: flex;
+    flex-direction: row;
+
 }
 
 section:nth-of-type(1) {
     height: 3em;
     background: lightgreen;
     /* enter needed declarations here */
+    justify-content: space-between;
+    align-items: center;
+
 }
 section:nth-of-type(1) div:last-child {
     /* enter needed declarations here */
+    margin-bottom: auto;
 }
 
 .purple-box {
@@ -57,24 +68,31 @@ section:nth-of-type(1) div:last-child {
 
 .purple-box:nth-of-type(1) {
     /* enter needed declarations here */
+    flex-grow: 2;
 }
 
 .purple-box:nth-of-type(2) {
     /* enter needed declarations here */
+    flex-grow: 1;
+
 }
 
 .blue-box {
     width: 100%;
     background: blue;
     height: 10em;
+
 }
 
 section:nth-of-type(3) {
     /* enter needed declarations here */
+    justify-content: flex-end;
+    align-items: center;
 }
 
 section:nth-of-type(3) h3 {
     /* enter needed declarations here */
+    flex-grow: 1;
 
 }
 
@@ -91,6 +109,7 @@ section:nth-of-type(3) h3 {
     width: 5em;
     background: brown;
     /* enter needed declarations here */
+    flex-grow: 1;
 }
 
 .large-brown-box:nth-of-type(2) {
@@ -99,6 +118,7 @@ section:nth-of-type(3) h3 {
 
 section:nth-of-type(5) {
     /* enter needed declarations here */
+    justify-content: space-around;
 }
 
 .yellow-box {
@@ -111,6 +131,11 @@ section:nth-of-type(6) {
     background: coral;
     height: 14em;
     /* enter needed declarations here */
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    align-items: center;
+/*    align-items: baseline;*/
 }
 
 .grey-box {
