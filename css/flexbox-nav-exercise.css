@@ -1,0 +1,105 @@
+/*COLORS----------------------------*/
+
+:root {
+	--color-gray: hsl(307, 1%, 76%);
+	--color-black: #000;
+}
+
+/*FONTS----------------------------*/
+
+/*body {
+	font-family: 'Montserrat', sans-serif;
+	font-family: 'Work Sans', sans-serif;
+}*/
+
+
+* {
+	box-sizing: border-box;
+}
+
+
+/*HEADER----------------------------*/
+
+.page-wrapper {
+	height: 100vh;
+}
+.header {
+	background: var(--color-gray);
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	height: 4.5;
+	flex-grow: 1;
+}
+
+.left-side, .right-side {
+	display: flex;
+}
+
+
+/*LOGO----------------------------*/
+
+.logo-div {
+	display: flex;
+	flex: 0 0 auto;
+	margin: 0 auto;
+
+
+}
+
+h1 {
+	margin: 0;
+	font-family: "Work Sans";
+	font-size: 3em;
+	padding: 0.2em 0;
+}
+
+
+/*IMAGES----------------------------*/
+
+
+img {
+	height: 20px;
+	width: 20px;
+}
+
+
+
+/*LISTS----------------------------*/
+
+ul {
+	display: flex;
+	padding-left: .5em;
+}
+
+li {
+	font-family: "Montserrat";
+	font-size: 10px;
+	list-style-type: none;
+	margin: auto 1.2em auto 0;
+}
+
+
+.left-side li {
+	padding-right: 10px;
+}
+
+.right-side li {
+	padding-left: 10px;
+}
+
+/*ANCHORS----------------------------*/
+
+a {
+	display: inline-block;
+	text-decoration: none;
+}
+
+
+
+
+
+
+
+
+
