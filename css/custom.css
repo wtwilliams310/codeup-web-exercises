@@ -1,0 +1,62 @@
+.navbar {
+	width: 60%;
+/*	background: white;*/
+/*justify-content: start;*/
+
+}
+
+/*.container-fluid, .collapse {
+	flex-grow: 0;
+}*/
+
+.container123 {
+	display: flex;
+    padding-left: var(--bs-gutter-x,.75rem);
+    width: 60%;
+}
+
+
+.btn-outline-success{
+	width: 100%;
+	color: rgb(13, 110, 253);
+	border: 1px solid rgb(13, 110, 253);
+}
+
+.header {
+	display: flex;
+	justify-content: space-between;
+}
+
+.btn-outline-primary {
+	margin: 10px;
+	border: none;
+}
+
+.icon {
+
+	margin: 0 4px 2px 0;
+}
+
+
+.jumbotron {
+	background-image: url('pizza.png');
+	height: 346px;
+	background-size: cover;
+/*	position: relative;*/
+}
+
+.bg-light {
+  --bs-bg-opacity: .5;
+  background-color: rgba(var(--bs-light-rgb), var(--bs-bg-opacity)) !important;
+}
+
+.bg-secondary1 {
+	--bs-bg-opacity: .06;
+	background-color: rgba(var(--bs-secondary-rgb), var(--bs-bg-opacity)) !important;
+}
+
+
+
+
+
+
