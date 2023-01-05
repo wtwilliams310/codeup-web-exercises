@@ -39,7 +39,7 @@
 
 
 .jumbotron {
-	background-image: url('pizza.png');
+	background-image: url('../img/pizza.png');
 	height: 346px;
 	background-size: cover;
 /*	position: relative;*/
