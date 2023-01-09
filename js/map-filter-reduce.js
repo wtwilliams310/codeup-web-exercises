@@ -101,15 +101,25 @@ const users = [
 // }
 //  console.log(answer(users));
 
-let message = "Your instructors are "
 
-const authorString = users.reduce(function(prevVal,currVal,idx){
-    return idx == 0 ? currVal.name : prevVal + ', ' + currVal.name;
+
+// const authorString = users.reduce(function(prevVal,currVal,idx){
+//     return idx == 0 ? currVal.name : prevVal + ', ' + currVal.name;
+// }, '')
+
+// let message = `Your instructors are ${authorString}.`
+
+// console.log(message);
+
+
+//yellow Bonus 
+const allLanguages = users.reduce((total, current, index) => {
+    return index == 0 ? current.languages : total + "," + current.languages
 }, '')
 
+let splitString = allLanguages.split(",")
 
-console.log(message + authorString);
-
+console.log([...new Set(splitString)])
 
 
 
