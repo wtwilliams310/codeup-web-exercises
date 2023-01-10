@@ -25,43 +25,94 @@
     culpa qui officia deserunt mollit anim id est laborum.
 </p>
 
+<button id="btn-1">Main Header</button>
+<button id="btn-2">Sub-Header</button>
+<button id="btn-3">Grey List Items</button>
+<button id="btn-4">First List Item</button>
+<button id="btn-5">Paragraph</button><br>
+<button id="btn-6">Reset</button>
+
 <script>
     (function() {
         "use strict";
         // yellow TODO: Uncomment next line and get the main header element by id
+
         let mainHeader = document.getElementById('main-header');
        
 
         // yellow TODO: Set inner html of mainHeader to "JavaScript is Cool"
-         mainHeader.innerHTML = 'JavaScript is Cool'
-        console.log(mainHeader);
+
+        //  mainHeader.innerHTML = 'JavaScript is Cool'
+        // console.log(mainHeader);
+
+        //green
+
+        const changeHeader = () => mainHeader.innerHTML = "JavaScript is Cool"
+
+        document.getElementById('btn-1').addEventListener('click', changeHeader)
+
+
 
         // yellow TODO: Uncomment the next line and get the sub header element by id
-        let subHeader = document.getElementById('sub-header');
-        console.log(subHeader);
+
+        // let subHeader = document.getElementById('sub-header');
+        // console.log(subHeader);
 
         // yellow TODO: Set the text color of subHeader to blue
-        subHeader.style.color = 'blue';
+
+        // subHeader.style.color = 'blue';
+
+        //green
+
+        let subHeader = document.getElementById('sub-header');
+
+        const colorSubHeader = () => subHeader.style.color = "blue"
+
+        document.getElementById("btn-2").addEventListener('click', colorSubHeader)
+
+
 
         // yellow TODO: Uncomment the next line and get all list items
        
-        let listItems = document.getElementsByTagName('li');
+        // let listItems = document.getElementsByTagName('li');
 
-        for (let i = 0; i < listItems.length; i += 1) {
-            console.log(listItems[i]);
-        }
+        // for (let i = 0; i < listItems.length; i += 1) {
+        //     console.log(listItems[i]);
+        // }
+
+
 
         // yellow TODO: Set text color on every other list item to grey
         
-        let listElements = document.getElementsByTagName('li');
+        // let listElements = document.getElementsByTagName('li');
 
-        for (let i = 0; i < listElements.length; i += 2) {
-            listElements[i].style.color = 'grey';
+        // for (let i = 0; i < listElements.length; i += 2) {
+        //     listElements[i].style.color = 'grey';
+        // }
+
+        //green
+
+        let listItems = document.getElementsByTagName('li')
+
+        const everyOtherLi = () => {
+            for(let i = 0; i < listItems.length; i += 2) {
+                listItems[i].style.color = 'grey'
+            }
         }
+
+        document.getElementById("btn-3").addEventListener('click', everyOtherLi)
+
         
         // yellow TODO: Set text color of li with dbid = 1 to blue
 
-        document.querySelector('[data-dbid="1"').style.color = 'red';
+        // document.querySelector('[data-dbid="1"]').style.color = 'blue';
+
+
+        //green 
+
+        const firstData = () => document.querySelector('[data-dbid="1"]').style.color = 'blue'
+
+        document.getElementById("btn-4").addEventListener('click', firstData)
 
         // yellow TODO: Uncomment the next line and get all elements with class name sub-paragraph
         // let subParagraphs = document.getElementsByClassName('sub-paragraph');
@@ -77,7 +128,7 @@
 
         can also do this in for-loop as it iterates through every index if I need to change all the elements with the same class.*/
 
-        let subParagraphs = document.getElementsByClassName('sub-paragraph');
+        // let subParagraphs = document.getElementsByClassName('sub-paragraph');
 
         // for (var i = 0; i < subParagraphs.length; i++) {
         //     subParagraphs[i].innerText = 'Mission Accomplished!'
@@ -86,7 +137,23 @@
 
         //or with single index change
 
-        subParagraphs[0].innerHTML = 'Mission Accomplished!!!!'
+        // subParagraphs[0].innerHTML = 'Mission Accomplished!!!!'
+
+
+        //green 
+
+        const changeParagraph = () => {
+            let paragraph = document.getElementsByClassName("sub-paragraph")
+            paragraph[0].innerHTML = "Mission Accomplished!!!!"
+        }
+
+        document.getElementById('btn-5').addEventListener('click', changeParagraph)
+
+        //lightblue Extra
+        
+        const reloadPage = () => window.location.reload()
+
+        document.getElementById('btn-6').addEventListener('click', reloadPage)
 
     })();
 </script>
