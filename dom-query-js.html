@@ -31,6 +31,8 @@
 <button id="btn-4">First List Item</button>
 <button id="btn-5">Paragraph</button><br>
 <button id="btn-6">Reset</button>
+<button id="btn-7">Remove Event Listener btn-5</button>
+
 
 <script>
     (function() {
@@ -146,11 +148,20 @@
             let paragraph = document.getElementsByClassName("sub-paragraph")
             paragraph[0].innerHTML = "Mission Accomplished!!!!"
         }
+        let btn5 = document.getElementById('btn-5')
+        let btn7 = document.getElementById('btn-7')
 
-        document.getElementById('btn-5').addEventListener('click', changeParagraph)
+        btn5.addEventListener('click', changeParagraph)
+
+        const removeEvent = () => btn5.removeEventListener('click', changeParagraph)
+
+        btn7.addEventListener('click', removeEvent)
+
+    
+      
 
         //lightblue Extra
-        
+
         const reloadPage = () => window.location.reload()
 
         document.getElementById('btn-6').addEventListener('click', reloadPage)
