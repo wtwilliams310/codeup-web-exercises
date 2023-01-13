@@ -6,13 +6,42 @@
 	<title>Document</title>
 </head>
 <body>
+	<h1 class="h1-id">Hello World</h1>
+	<p id="paragraph">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ratione illum nisi sunt corporis eius sint tempore ducimus. Laboriosam dicta, quidem deleniti perferendis voluptas minus facere laudantium optio, asperiores, suscipit corporis!</p>
+	<ul class="list">
+		<li class="codeup">World is big</li>
+		<li class="codeup">People are small</li>
+		<li id="codeup">Stuff to write</li>
+	</ul>
+
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 	<script>
-		$(()=>{
-		alert('The DOM has finished loading the first time.')
+		// $(()=>{
+		// alert('The DOM has finished loading the first time.')
+		// })
 
+		// $("<h1>").attr('id', 'h1-id').text('Hello Titus').appendTo("body")
+		// $("<p>").attr('class', 'paragraph').text('We are learning new stuff everyday.').appendTo("body")
+		// $('<ul>').attr('id', '')
+		// $("<h1>").attr('id', 'h1-id').text('Hello Titus').appendTo("body")
+
+		// $("h1")
+
+		// $(()=>{
+		// 	alert($('#item1').text())
+		// })
+
+		// $(".codeup").css("border", "5px solid red")
+
+		$("li").css("font-size", '20px')
+
+		$("h1, p, li").css('background-color', 'teal')
+
+		$(function(){
+			alert($('h1').html())
 		})
+
 	</script>
-	<script src="./js/jquery-exercises.js"></script>
+	<!-- <script src="./js/jquery-exercises.js"></script> -->
 </body>
 </html>
