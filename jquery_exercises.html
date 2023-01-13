@@ -14,18 +14,16 @@
 		<li id="codeup">Stuff to write</li>
 	</ul>
 
+	<button id="my-element" type="button">this button</button>
+
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 	<script>
+
+		// JQUERY Selectors Exercises------------------>
+
 		// $(()=>{
 		// alert('The DOM has finished loading the first time.')
 		// })
-
-		// $("<h1>").attr('id', 'h1-id').text('Hello Titus').appendTo("body")
-		// $("<p>").attr('class', 'paragraph').text('We are learning new stuff everyday.').appendTo("body")
-		// $('<ul>').attr('id', '')
-		// $("<h1>").attr('id', 'h1-id').text('Hello Titus').appendTo("body")
-
-		// $("h1")
 
 		// $(()=>{
 		// 	alert($('#item1').text())
@@ -33,13 +31,32 @@
 
 		// $(".codeup").css("border", "5px solid red")
 
-		$("li").css("font-size", '20px')
+		// $("li").css("font-size", '20px')
 
-		$("h1, p, li").css('background-color', 'teal')
+		// $("h1, p, li").css('background-color', 'teal')
 
-		$(function(){
-			alert($('h1').html())
+		// $(function(){
+		// 	alert($('h1').html())
+		// })
+
+		// JQUERY Events-Mouse Events Exercises--------------------->
+
+		$('h1').click((e)=>{
+			$('h1').css('background-color', 'lightblue')
 		})
+
+		$('#paragraph').click((e)=>{
+			$('#paragraph').css('font-size', '18px')
+		})
+
+		$('li').hover(
+			() => {
+				$('li').css('background-color', 'red')
+			},
+			() => {
+				$('li').css('background-color', 'transparent')
+		})
+
 
 	</script>
 	<!-- <script src="./js/jquery-exercises.js"></script> -->
