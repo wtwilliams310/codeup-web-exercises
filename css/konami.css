@@ -1,0 +1,17 @@
+.gif {
+    width: 400px;
+    height: 400px;
+    background-repeat: no-repeat;
+    background-image: url(https://media.giphy.com/media/mZMcO2bU8HvDG/giphy.gif);
+}
+
+.gif1 {
+    width: 400px;
+    height: 400px;
+    background-repeat: no-repeat;
+    background-image: url(https://media.giphy.com/media/pHb82xtBPfqEg/giphy.gif);
+}
+
+/* body {
+    background-color: red;
+} */

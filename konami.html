@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Konami Code</title>
+</head>
+<link rel="stylesheet" href="./css/konami.css">
+
+<body>
+	<h1>Konami Code</h1>
+	<!-- <div class="gif""></div> -->
+
+	<script src=" /js/jquery-3.6.3.js">
+	</script>
+	<script>
+		"use strict";
+
+		$(document).keyup(function (event) {
+			console.log(event.keyCode);
+		});
+
+		$('h1').click((e) => {
+			$('h1').css('color', 'red')
+		})
+
+		$('#textfield').keyup((e) => {
+			alert('A key was pushed down')
+		})
+
+		let code = []
+		const thirtyLives = [38, 38, 40, 40, 37, 39, 66, 65]
+		$(document).on('keyup', function (events) {
+			if (code.length <= 7) {
+				code.push(events.keyCode)
+			} else if (code.toString() === thirtyLives.toString() && events.keyCode === 13) {
+				$('body').css('background', 'blue')
+				$('<div>').addClass('gif1').appendTo('body');
+				code = [];
+			} else {
+				$('body').css('background', 'red')
+				$('<div>').addClass('gif').appendTo('body')
+			}
+		})
+
+
+
+
+	</script>
+</body>
+
+</html>
