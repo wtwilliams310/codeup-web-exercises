@@ -98,6 +98,32 @@
         access Packers Roost and Siyeh Bend.
       </dd>
     </dl>
+
+    <h3 id="national-parks-heading">National Parks</h3>
+    <ul id="national-parks">
+      <li>Arches</li>
+      <li>Badlands</li>
+      <li>Carlsbad Caverns</li>
+      <li>Denali</li>
+      <li>Everglades</li>
+    </ul>
+    <h3>State Parks of Texas</h3>
+    <ul id="state-parks-texas">
+      <li>Abilene</li>
+      <li>Big Bend</li>
+      <li>Choke Canyon</li>
+      <li>Davis Mountains</li>
+      <li>Enchanted Rock</li>
+    </ul>
+    <h3>State Parks of Nevada</h3>
+    <ul id="state-parks-nevada">
+      <li>Beaver Dam</li>
+      <li>Buckland Station</li>
+      <li>Cave Lake</li>
+      <li>Cave Rock</li>
+      <li>Dayton</li>
+    </ul>
+    <button type="button">Click Me</button>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 
     <script>
@@ -114,12 +140,19 @@
 
       $(".hide-content").click(function (e) {
         e.preventDefault();
-        // $(".hide-content").css("color", "blue");
         $("dd").toggleClass("invisible");
-        // $("h3").toggleClass("hide-content");
       });
 
-      $;
+      $("button").click(function () {
+        $("ul li:last-child").css("background-color", "yellow");
+      });
+      $("h3").click(function () {
+        $("li").css("font-weight", "bold");
+      });
+      $("li").click(function () {
+        $(this).parent().children().first().css("color", "blue");
+      });
+
       // $(".invisible").toggleClass("visible");
     </script>
   </body>
