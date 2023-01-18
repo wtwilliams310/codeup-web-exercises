@@ -5,6 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      .addColor {
+        color: rgba(40, 175, 71, 0.892);
+      }
+
+      .invisible {
+        visibility: hidden;
+      }
+
+      dd {
+        color: blue;
+      }
+
+      /* .hide-content {
+        color: blueviolet;
+      } */
+    </style>
   </head>
   <body>
     <h1>Top Ten Questions about Glacier National Park</h1>
@@ -81,5 +98,29 @@
         access Packers Roost and Siyeh Bend.
       </dd>
     </dl>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+    <script>
+      "use strict";
+
+      $("h1").css("color", "red");
+
+      $("dd").addClass("invisible");
+
+      $("<h3>")
+        .addClass("hide-content")
+        .insertAfter("h1")
+        .text("Show/Hide Answers");
+
+      $(".hide-content").click(function (e) {
+        e.preventDefault();
+        // $(".hide-content").css("color", "blue");
+        $("dd").toggleClass("invisible");
+        // $("h3").toggleClass("hide-content");
+      });
+
+      $;
+      // $(".invisible").toggleClass("visible");
+    </script>
   </body>
 </html>
