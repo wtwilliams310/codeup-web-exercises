@@ -18,9 +18,32 @@
         color: blue;
       }
 
-      /* .hide-content {
-        color: blueviolet;
-      } */
+      h2 {
+        text-align: center;
+      }
+      .pic-container,
+      .button-container {
+        display: flex;
+      }
+
+      .button-container {
+        margin: 0 1rem;
+        justify-content: space-evenly;
+      }
+      .pictures {
+        width: 220px;
+        height: 300px;
+        border: 5px solid firebrick;
+        margin: 2rem 1rem;
+        object-fit: cover;
+      }
+
+      img {
+        /* width: 250px;
+        height: 300px; */
+        width: 100%;
+        height: 100%;
+      }
     </style>
   </head>
   <body>
@@ -124,6 +147,19 @@
       <li>Dayton</li>
     </ul>
     <button type="button">Click Me</button>
+    <hr />
+    <h2>jQuery Traversing</h2>
+    <div class="pic-container">
+      <div class="pictures cat1"><img src="./img/cat1.jpg" alt="" /></div>
+      <div class="pictures cat2"><img src="./img/cat2.jpeg" alt="" /></div>
+      <div class="pictures cat3"><img src="./img/cat3.jpg" alt="" /></div>
+    </div>
+    <div class="button-container">
+      <button class="btn-1">Swap Right</button>
+      <button class="btn-2">Swap Right or Left</button>
+      <button class="btn-3">Swap Left</button>
+    </div>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 
     <script>
@@ -147,11 +183,15 @@
         $("ul li:last-child").css("background-color", "yellow");
       });
       $("h3").click(function () {
-        $("li").css("font-weight", "bold");
+        $(this).next().children().css("font-weight", "bold");
       });
-      $("li").click(function () {
+      $("li").on("click", function () {
         $(this).parent().children().first().css("color", "blue");
       });
+
+      // $('btn-1').click(function() {
+      //   $('cat1').
+      // })
 
       // $(".invisible").toggleClass("visible");
     </script>
