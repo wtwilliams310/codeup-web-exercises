@@ -25,9 +25,8 @@
   },
   {
     "title": "Tool Box",
-    "quantity": 30,
+    "quantity": 300,
     "categories": ["tool"],
     "price": 40
   }
-
 ]
