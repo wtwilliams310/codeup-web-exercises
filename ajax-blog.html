@@ -29,6 +29,18 @@
         font-family: "Cormorant Unicase", serif;
       }
 
+      .content {
+        display: none;
+      }
+
+      /* .content-hide {
+				display: ;
+			} */
+
+      .after-hidden {
+        margin-bottom: 4rem;
+      }
+
       /* .categories1 {
         margin-bottom: 2rem;
       } */
@@ -55,19 +67,23 @@
           let html = "";
 
           for (let i = 0; i < data.length; i++) {
-            html += `
-									<div class="blog-container mb-5 d-flex flex-column ">
-										<h3 class="text-center fw-bold">${data[i].title}</h3>
-										<div class="mx-auto mb-3 date">${data[i].date}</div>
-
-										<p class="mt-2 mb-3">${data[i].content}</p>
-										<div class="categories1 mb-1"><span class="bg-secondary p-1 ps-2 pe-2 text-white rounded">Topics: ${data[
-                      i
-                    ].categories.join(", ")}</span></div><br>
-									</div>
-										`;
+            html += `<div class="blog-container d-flex flex-column">
+						<h3 class="text-center fw-bold">${data[i].title}</h3>
+						<div class="mx-auto date ">${data[i].date}</div>
+						<p class="mt-2 mb-3 to-hide">${data[i].content}</p>
+						<div class="categories1 mb-1 to-hide">
+							<span class="bg-secondary p-1 ps-2 pe-2 text-white rounded">Topics: ${data[i].categories.join(", ")}</span>
+						</div>
+						<br>
+					</div>`;
           }
+
           $("#posts").append(html);
+
+          $("h3").on("click", function () {
+            $(this).next().next().toggleClass("content");
+            $(this).next().next().next().toggleClass("content");
+          });
         });
       })();
     </script>
