@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>First Mapbox Map</title>
+	<!-- Mapbox CSS -->
+
+	<link href='https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.css' rel='stylesheet' />
+
+	<!-- Custom CSS -->
+	<link rel="stylesheet" href="./css/reset.css" />
+
+	<style>
+		#map {
+			/* the width and height may be set to any size */
+			width: 100%;
+			flex-grow: 1;
+		}
+
+		header.container {
+			border-bottom: 1px solid rgba(0, 0, 0, 0.78);
+		}
+
+		main.container,
+		main.container>.row {
+			padding: 0;
+			column-gap: 0px;
+			flex-grow: 1;
+		}
+
+		aside.column {
+			width: 300px;
+			flex: none;
+		}
+	</style>
+</head>
+
+<body>
+	<!-- <h1>My First Mapbox Map!</h1> -->
+
+	<!-- The HTML element that serves as the Mapbox container -->
+	<div class="page-wrapper">
+		<header class="container">
+			<div class="row full-width">
+				<div class="column">YOUR LOGO HERE</div>
+				<div class="column"></div>
+			</div>
+		</header>
+		<main class="container">
+			<div class="row full-width">
+				<aside class="column"></aside>
+				<div class="column">
+					<div id="map"></div>
+				</div>
+			</div>
+		</main>
+	</div>
+
+	<!-- Keys  -->
+	<script src="./js/key.js"></script>
+
+	<!-- Mapbox Geocoder Util  -->
+	<script src="./js/mapbox-geocoder-utils.js"></script>
+
+	<!-- Mapbox JS -->
+	<script src='https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.js'></script>
+
+	<!-- Custom JS -->
+	<script>
+		mapboxgl.accessToken = keys.mapbox;
+		let map = new mapboxgl.Map({
+			container: "map",
+			style: "mapbox://styles/mapbox/streets-v9",
+			zoom: 10,
+			center: [-98.4916, 29.4252],
+		});
+
+		var codeupPopup = new mapboxgl.Popup()
+			.setHTML("<p>Codeup Rocks!</p>")
+
+
+		// let marker = new mapboxgl.Marker()
+		// 	.setLngLat([-98.4916, 29.426])
+		// 	.addTo(map);
+
+		// var alamoPopup =
+		// 	new mapboxgl.Popup().setHTML("<p>Remember The Alamo!<p>");
+
+		// marker.setPopup(alamoPopup);
+
+		geocode("600 Navarro St #350, San Antonio, TX 78205", keys.mapbox).then(function (result) {
+			console.log(result);
+			let marker = new mapboxgl.Marker()
+				.setLngLat([-98.489615, 29.426827])
+				.addTo(map)
+				.setPopup(codeupPopup)
+
+			// map.setCenter(result);
+			// map.setZoom(18);
+		});
+
+		// reverseGeocode({ lng: -98.4861, lat: 29.4260 }, keys.mapbox).then(function (results) {
+		// 	// logs the address for The Alamo
+		// 	console.log(results);
+		// });
+
+
+
+
+
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Mapbox CDN -->
+	<link href='https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.css' rel='stylesheet' />
+
+	<link rel='stylesheet'
+		href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.css'
+		type='text/css' />
+
+	<style>
+		body {
+			margin: 0 0 0 4rem;
+			padding: 0;
+		}
+
+		#map {
+			width: 100%;
+		}
+
+		button {
+			margin: 1rem 0;
+			padding: 4px;
+		}
+	</style>
+
+	<title>Document</title>
+
+
+</head>
+
+<body>
+
+	<h1>Mapbox API Exercises</h1>
+	<div id='map' style='width: 600px; height: 400px;'></div>
+	<button id="btn" type="button">Recommendations</button>
+
+	<div class="restaurant visible hidden">
+		<h2></h2>
+		<p></p>
+	</div>
+
+
+	<!-- Keys -->
+	<script src="./js/key.js"></script>
+
+	<!-- Mapbox -->
+	<script src='https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.js'></script>
+
+	<!-- Mapbox Geocoding -->
+	<script src="./js/mapbox-geocoder-utils.js"></script>
+	<script
+		src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.min.js'></script>
+
+	<!-- Restaurnat Object -->
+	<script>
+		const restaurants = [
+			{
+				geoLocation: [-98.51201, 29.60665],
+				name: "Thai Buri",
+				description: "Thai Buri offers a taste of the Southeast Asian culinary powerhouse's regional        cuisine. Using orgainc products and locally sourced ingredients, every dish is freshly prepared."
+			},
+			{
+				geoLocation: [-98.490415, 29.4267],
+				name: "Bohanan's",
+				description: "Located in the heart of San Antonio on historic Houston Street, Bohanan's beautiful upstairs dining room has an Old-World steakhouse charm with a modern attention to detail."
+			},
+			{
+				geoLocation: [-98.522642, 29.534725],
+				name: "Azro",
+				description: "Azro is a family operated Authentic Afghan cuisine established in 2014. Azro is based off of recipes past down from generations incorporating spices including cardamom, cinnamon, cloves, coriander and more."
+			}
+		];
+	</script>
+
+	<!-- Custom JS -->
+	<script>
+		const btn = document.querySelector("#btn")
+
+		const start = {
+			center: [300, 10],
+			zoom: 1,
+			pitch: 0,
+			bearing: 0
+		};
+
+		const end1 = {
+			center: restaurants[2].geoLocation,
+			zoom: 16,
+			bearing: 130,
+			pitch: 5
+		};
+
+		const end3 = {
+			center: restaurants[1].geoLocation,
+			zoom: 16,
+			bearing: 130,
+			pitch: 5
+		};
+
+
+
+		mapboxgl.accessToken = keys.mapbox;
+		const map = new mapboxgl.Map({
+			container: 'map', // container ID
+			style: 'mapbox://styles/mapbox/streets-v12', // style URL
+			style: 'mapbox://styles/mapbox/satellite-streets-v12',
+			...start,
+			// center: [-98.4916, 29.4260], // starting position [lng, lat]
+			zoom: 1, // starting zoom
+		});
+
+		// const marker = new mapboxgl.Marker() // initialize a new marker
+		//     .setLngLat([-122.25948, 37.87221]) // Marker [lng, lat] coordinates
+		//     .addTo(map); // Add the marker to the map
+
+		const geocoder = new MapboxGeocoder({
+			// Initialize the geocoder
+			accessToken: keys.mapbox, // Set the access token
+			mapboxgl: mapboxgl, // Set the mapbox-gl instance
+			marker: true // Set to false to not use the default marker style
+		});
+
+
+		// <---------- Set marker
+		// let marker = new mapboxgl.Marker()
+		//     .setLngLat([-98.490415, 29.4267])
+		//     .addTo(map);
+
+		// <---------- Set Pop-up
+		let alamoPopup = new mapboxgl.Popup()
+			.setHTML("<p>Thai Buri</p>")
+
+		// marker.setPopup(alamoPopup)
+
+		// <---------- Add the geocoder to the map
+		map.addControl(geocoder);
+
+		// Geocode helper function
+		// Thai Buri
+		// geocode("2211 NW Military Hwy #131, San Antonio, TX 78213", keys.mapbox).then(function (result) {
+		// 	console.log(result);
+		// 	map.setCenter(result);
+		// 	map.setZoom(15);
+
+		// 	// const popup = new mapboxgl.Popup({ closeOnClick: false })
+		// 	//     .setLngLat(result)
+		// 	//     .setHTML('<h1>Thai Buri</h1>')
+		// 	//     .addTo(map);
+		// })
+
+
+		// <---------- Place marker at result ----------------->
+		map.on('load', () => {
+			map.addSource('single-point', {
+				type: 'geojson',
+				data: {
+					type: 'FeatureCollection',
+					features: []
+				}
+			});
+
+			map.setFog({
+				'color': 'rgb(220, 159, 159)', // Pink fog / lower atmosphere
+				'high-color': 'rgb(36, 92, 223)', // Blue sky / upper atmosphere
+				'horizon-blend': 0.2 // Exaggerate atmosphere (default is .1)
+			});
+
+			map.addLayer({
+				id: 'point',
+				source: 'single-point',
+				type: 'circle',
+				paint: {
+					'circle-radius': 10,
+					'circle-color': '#448ee4'
+				}
+			});
+
+			let isAtStart = true;
+
+			// Listen for the `result` event from the Geocoder
+			// `result` event is triggered when a user makes a selection
+			//  Add a marker at the result's coordinates
+			geocoder.on('result', (event) => {
+				map.getSource('single-point').setData(event.result.geometry);
+			});
+
+
+			// <---------- Function to acces restaurants object
+
+			function loadRestaurants(obj) {
+				for (let i = 0; i < obj.length; i++) {
+					let marker = new mapboxgl.Marker()
+						.setLngLat(restaurants[i].geoLocation)
+						.addTo(map);
+				}
+			}
+
+			// loadRestaurants(restaurants)
+
+			// btn.addEventListener('click', function () {
+			// 	loadRestaurants(restaurants)
+			// 	const target = isAtStart ? end : start;
+			// 	isAtStart = !isAtStart;
+
+			// 	map.flyTo({
+			// 		...target,
+			// 		duration: 12000,
+			// 		essential: true
+			// 	});
+			// })
+
+			const count = []
+
+			btn.addEventListener('click', function (e) {
+
+				const end2 = {
+					center: restaurants[0].geoLocation,
+					zoom: 16,
+					bearing: 130,
+					pitch: 5
+				};
+				count.push("")
+
+				console.log(count)
+
+
+				function counter(e) {
+					if (e) {
+						// count++;
+					}
+					// return count;
+				}
+				// loadRestaurants(restaurants)
+
+				if (count.length === 1) {
+					let target = end3
+					map.flyTo({
+						...target,
+						duration: 12000,
+						essential: true
+					});
+
+				} else if (count.length === 2) {
+					target = end2;
+					// isAtStart = !isAtStart;
+
+					map.flyTo({
+						...target,
+						duration: 12000,
+						essential: true
+					});
+				} else {
+					target = end1;
+					// isAtStart = !isAtStart;
+
+					map.flyTo({
+						...target,
+						duration: 12000,
+						essential: true
+					});
+				}
+
+			})
+
+
+		});
+
+        //Pop-up
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</script>
+</body>
+
+</html>
