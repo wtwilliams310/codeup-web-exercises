@@ -33,16 +33,16 @@
 					<button id="btn" type="button">Recommendations</button>
 				</div>
 				<div class="column-description">
-					<div class="restaurant visible hidden">
+					<div id="rest-info" class="restaurant visible hidden">
 						<!-- <h2>THAI BURI</h2> -->
-						<p>
+						<!-- <p>
 							<strong>Thai Buri</strong> offers a taste of the Southeast Asian culinary powerhouse's
 							regional cuisine. Using organic products and locally sourced ingredients, every dish
 							is freshly prepared.
 						</p>
 						<div class="image">
 							<img src="./img/thai-1.jpg" alt="">
-						</div>
+						</div> -->
 					</div>
 					<div id="description"></div>
 				</div>
@@ -51,6 +51,7 @@
 	</main>
 
 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 
 	<!-- JS-Keys -->
 	<script src="./js/key.js"></script>
@@ -65,31 +66,32 @@
 
 	<!-- Restaurnat Object -->
 	<script>
+
+	</script>
+
+	<!-- Custom JS -->
+	<script>
 		const restaurants = [
 			{
 				geoLocation: [-98.51201, 29.60665],
-				name: "<strong>Thai Buri</strong>",
+				name: '<p class="restName"><strong>Thai Buri</strong></p>',
 				description: "<p><strong>Thai Buri</strong> offers a taste of the Southeast Asian culinary powerhouse's regional cuisine. Using orgainc products and locally sourced ingredients, every dish is freshly prepared. 12:00-6:00 p.m.</p>",
 				image: '<img src="./img/thai-1.jpg" alt="">'
 			},
 			{
 				geoLocation: [-98.490415, 29.4267],
-				name: "<strong>Bohanan's</strong>",
+				name: '<p class="rest-name"><strong>Bohanans</strong></p>',
 				description: "<p><strong>Bohanan's</strong> is located in the heart of San Antonio on historic Houston Street, Bohanan's beautiful upstairs dining room has an Old-World steakhouse charm with a modern attention to detail.</p>",
-				image: '<img src="./img/thai-1.jpg" alt="">'
+				image: '<img src="./img/bohanans-1.jpg" alt="">'
 			},
 			{
 				geoLocation: [-98.522642, 29.534725],
-				name: "<strong>Azro</strong>",
+				name: '<p class="rest-name"><strong>Azro</strong></p>',
 				description: "<p><strong>Azro</strong> is a family operated Authentic Afghan cuisine established in 2014. Azro is based off of recipes past down from generations incorporating spices including cardamom, cinnamon, cloves, coriander and more.</p>",
-				image: '<img src="./img/thai-1.jpg" alt="">'
+				image: '<img src="./img/azro-1.jpg" alt="">'
 			}
 		];
-	</script>
 
-	<!-- Custom JS -->
-	<script>
-		const btn = document.querySelector("#btn")
 
 		const start = {
 			center: [-98.51201, 29.60665],
@@ -119,6 +121,9 @@
 			pitch: 30
 		};
 
+		const btn = document.querySelector("#btn");
+		const restInfo = document.querySelector('#rest-info');
+
 
 		mapboxgl.accessToken = keys.mapbox;
 		const map = new mapboxgl.Map({
@@ -138,21 +143,16 @@
 			marker: true // Set to false to not use the default marker style
 		});
 
-		// <---------- Set marker
+		map.addControl(geocoder); // <--- Add the geocoder to the map
 
-		// <---------- Set Pop-up
-
-		// <---------- Add the geocoder to the map
-		map.addControl(geocoder);
-
-		// Geocode helper function
-		// Thai Buri
+		// <--- Geocode helper function
 		// geocode("2211 NW Military Hwy #131, San Antonio, TX 78213", keys.mapbox).then(function (result) {
 		// 	console.log(result);
 		// 	map.setCenter(result);
 		// 	map.setZoom(15);
 
-		// <---------- Place marker at result ----------------->
+		// <---------- map style to load ----------------->
+
 		map.on('load', () => {
 			map.addSource('single-point', {
 				type: 'geojson',
@@ -178,108 +178,104 @@
 					'circle-color': '#448ee4'
 				}
 			});
+		});
 
-			let isAtStart = true;
+		function loadRestaurants(obj) { // <---- function that will access the restaurants object
 
-			// Listen for the `result` event from the Geocoder
-			// `result` event is triggered when user makes a selection
-			//  Add a marker at the result's coordinates
-			// geocoder.on('result', (event) => {
-			// 	map.getSource('single-point').setData(event.result.geometry);
-			// });
+			for (let i = 0; i < obj.length; i++) {
+				let popup = new mapboxgl.Popup({ offset: 35, closeOnClick: false }) // <-- popup on click
+					.setHTML(restaurants[i].name)
 
-
-			// <---------- Function to acces restaurants object
-
-			function loadRestaurants(obj) {
-				for (let i = 0; i < obj.length; i++) {
-					let popup = new mapboxgl.Popup({ offset: 25, closeOnClick: false })
-						.setHTML(restaurants[i].name)
+				let marker = new mapboxgl.Marker() // <-- set marker for each restaurant
+					.setLngLat(restaurants[i].geoLocation)
+					.setPopup(popup)
+					.addTo(map);
 
 
 
-					let marker = new mapboxgl.Marker()
-						.setLngLat(restaurants[i].geoLocation)
-						.setPopup(popup)
-						.addTo(map);
-
-
-				}
-			}
-
-			let count = {
-				center: "center",
-				zoom: 16,
-				bearing: 0,
-				pitch: 5
 			};
 
-			console.log(count.center);
-
-			btn.addEventListener('click', function (e) {
-
-				loadRestaurants(restaurants)
-
-				const fly = (targetRestaurant) => {
-					map.flyTo({
-						...targetRestaurant,
-						duration: 12000,
-						essential: true
-					});
-				}
+		};
 
 
-				console.log(count.center)
+		let mouseClicks = 0; // <-- tracks each btn click for btn eventListener
 
-				if (count.center === "center") {
+		console.log(mouseClicks);
 
-					fly(click1)
-					// let target = click1
-					// map.flyTo({
-					// 	...target,
-					// 	duration: 12000,
-					// 	essential: true
-					// });
+		btn.addEventListener('click', function (e) { // <-- on click all markers and popups are added
+			loadRestaurants(restaurants);
 
-					count.center = click1;
+			const fly = (targetRestaurant) => { // <-- function sets the next restaurant to jump to on click
+				map.flyTo({
+					...targetRestaurant,
+					duration: 12000,
+					essential: true
+				});
+			};
+			console.log(mouseClicks);
 
-				} else if (count.center === click1) {
-					target = click2;
+			if (mouseClicks === 0) {
+				fly(click1);
 
-					map.flyTo({
-						...target,
-						duration: 12000,
-						essential: true
-					});
 
-					count.center = click2
-				} else {
-					target = click3;
 
-					map.flyTo({
-						...target,
-						duration: 12000,
-						essential: true
-					});
+				mouseClicks = 1;
+				console.log(mouseClicks);
+			} else if (mouseClicks === 1) {
 
-					count.center = "center";
-				}
+				fly(click2);
+				mouseClicks = 2;
+			} else {
+				fly(click3);
+				mouseClicks = 0;
+			};
 
-			})
 
 
 		});
 
-        //Pop-up
+
+		$('#map').on('click', function () {
+			html = '';
+			if (mouseClicks === 1) {
+				html += `
+						${restaurants[1].description}
+						<div class="image">${restaurants[1].image}</div>
+						`
+				restInfo.innerHTML = html;
+
+			} else if (mouseClicks === 2) {
+				html += `
+						${restaurants[0].description}
+						<div class="image">${restaurants[0].image}</div>
+						`
+				restInfo.innerHTML = html;
+
+			} else {
+				html += `
+						${restaurants[2].description}
+						<div class="image">${restaurants[2].image}</div>
+						`
+				restInfo.innerHTML = html;
+
+			}
 
 
+		})
+		html = '';
+
+		$('h1').on('click', function () {
+			html += `
+						${restaurants[0].description}
+						<div class="image">${restaurants[0].image}</div>`
 
 
+			$('h1').css('color', 'red');
+			restInfo.innerHTML = html;
 
+		})
 
-
-
-
+		// <-- JS for innerHTML
 
 
 
