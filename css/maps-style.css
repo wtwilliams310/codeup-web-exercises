@@ -1,28 +1,28 @@
 /* Reset */
 
 * {
-	box-sizing: border-box;
-	margin: 0;
-	padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 img {
-	max-width: 100%;
+  max-width: 100%;
 }
 
 body {
-	font-family: 'Open Sans', sans-serif;
-	font-size: 16px;
-	line-height: 1.5;
-	color: #333;
-	background-color: #fff;
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+  background-color: #fff;
 }
 
 /* THE PAGE WRAPPER MIMICS THE BODY, ONLY WE ARE ABLE TO DO MORE WITH IT IF NECESSARY */
 .page-wrapper {
-	display: flex;
-	flex-direction: column;
-	min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 /* THE CONTAINER -- ALSO KNOWN AS A "SECTION" or "WRAPPER" -- IS A FULL WIDTH DIV THAT
@@ -39,101 +39,142 @@ body {
 /* THE ROW ESTABLISHES MAXIMUM WIDTH ON SITE CONTENT, AND ORGANIZES ITS CHILD(REN), THE
  COLUMN, HORIZONTALLY. */
 .row {
-	display: flex;
-	width: 100%;
-	max-width: 900px;
-	padding: 0 20px;
-	column-gap: 20px;
+  display: flex;
+  width: 100%;
+  max-width: 900px;
+  padding: 0 20px;
+  column-gap: 20px;
 }
 
 /* OPTIONAL COMBO CLASS TO MAKE ROW FULL-WIDTH */
 .row.full-width {
-	max-width: unset;
+  max-width: unset;
 }
 
 /* OPTIONAL COMBO CLASS TO MAKE ROW COLUMNS SPACED APART */
 .row.space-between {
-	justify-content: space-between;
+  justify-content: space-between;
 }
 
 /* COLUMNS WILL, BY DEFAULT, SHARE SPACE EQUALLY HORIZONTALLY WITHIN THE ROW WITH
  THEIR SIBLINGS. CONTENT PUT INSIDE THEM WILL STACK VERTICALLY. */
 .column {
-	display: flex;
-	flex-direction: column;
-	flex: 1 0;
-	min-width: 0px;
+  display: flex;
+  flex-direction: column;
+  flex: 1 0;
+  min-width: 0px;
 }
 
 /* OPTIONAL COMBO CLASS TO MAKE A COLUMN SHRINK INSTEAD OF GROW */
 .column.col-shrink {
-	flex: 0 1 auto;
+  flex: 0 1 auto;
 }
-
 
 /* ------------------------------------------------- */
-.page-wrapper {
-	/* margin: 1rem 2rem; */
-	border: 3px solid darkgray;
-}
 
 .container-content,
 .container-header {
-	margin: 1rem 2rem;
-	border: 3px solid red;
+  margin: 1rem 0rem;
 }
 
-
+.container-header {
+  background-color: rgba(121, 120, 120, 0.97);
+  color: #fff;
+  text-shadow: 2px 2px 4px #000000;
+  text-align: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
 
 .row-content {
-	border: 3px solid blue;
-	display: flex;
+  display: flex;
+}
 
+.markerBuri {
+  background-image: url(../img/thai.jpg);
+  background-size: cover;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.markerBohanans {
+  background-image: url(../img/us.jpeg);
+  background-size: cover;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.markerAzro {
+  background-image: url(../img/afgahn-flag.jpg);
+  background-size: cover;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
 }
 
 .column-map,
 .column-description {
-	border: 3px solid green;
-	display: flex;
-	flex-direction: column;
-	flex: 1 0 0;
-	/* min-width: 0px; */
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 0;
+}
+
+.column-description {
+  min-width: 200px;
+  background-color: rgba(121, 120, 120, 0.97);
+  color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.column-description p {
+  margin: 15px;
+}
+
+img {
+  width: 100%;
+  max-height: 410px;
+  object-fit: contain;
 }
 
 .column-map {
-	position: relative;
+  position: relative;
 }
 
 #map {
-	/* width: 100%; */
-	width: 650px;
-	height: 450px;
+  width: 850px;
+  height: 550px;
 }
 
 button {
-	position: absolute;
-	background-color: rgb(0, 191, 255);
-	color: black;
-	font-weight: bold;
-	/* padding: 25px; */
-	top: 88%;
-	z-index: 999;
-	align-self: flex-sstart;
-	/* prevents button from stretching full width */
-	margin: 1rem 0;
-	padding: 10px;
-	/* border: none; */
-	border-radius: 10px;
-
+  position: absolute;
+  background-color: rgb(0, 191, 255);
+  color: black;
+  font-weight: bold;
+  bottom: -2%;
+  z-index: 999;
+  align-self: flex-sstart;
+  /* prevents button from stretching full width */
+  margin: 1rem 0;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
 }
 
 .mapboxgl-popup {
-	width: 120px;
-	font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
-	text-align: center;
-	/* background-color: darkgrey; */
+  width: 180px;
+  font: 12px/20px "Helvetica Neue", Arial, Helvetica, sans-serif;
+  text-align: center;
+}
+
+.mapboxgl-popup-content {
+  text-align: center;
+  font-family: "Open Sans", sans-serif;
 }
 
 strong {
-	color: blue;
+  color: blue;
 }
