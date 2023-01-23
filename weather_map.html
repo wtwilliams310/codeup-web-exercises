@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+
+    <!-- Mapbox -->
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.css"
+      rel="stylesheet"
+    />
+
+    <!-- My CSS -->
+    <link rel="stylesheet" href="./css/weather-map.css" />
+
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="pagewrapper">
+      <div class="container-header">
+        <h1>Weather Map API</h1>
+      </div>
+      <div class="container-content">
+        <div class="container-search">Search</div>
+        <div class="container-cards">cards</div>
+        <div id="map"></div>
+      </div>
+    </div>
+
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+    <!-- JS-Keys -->
+    <script src="./js/key.js"></script>
+
+    <!-- Bootstrap -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Mapbox -->
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.js"></script>
+
+    <!-- Mapbox Geocoding -->
+    <!-- <script src="./js/mapbox-geocoder-utils.js"></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.min.js"></script> -->
+
+    <script>
+      mapboxgl.accessToken = keys.mapbox;
+      const map = new mapboxgl.Map({
+        container: "map", // container ID
+        style: "mapbox://styles/mapbox/streets-v12", // style URL
+        center: [-74.5, 40], // starting position [lng, lat]
+        zoom: 9, // starting zoom
+      });
+
+      map.on("load", function () {
+        map.resize();
+      });
+    </script>
+
+    <script>
+      "use strict";
+
+      $.get("https://api.openweathermap.org/data/2.5/forecast", {
+        lat: 29.4252,
+        lon: -98.4916,
+        appid: keys.openWeather,
+        units: "imperial",
+      })
+        .done(function (data) {
+          for (let i = 0; i < data.list.length; i += 8) {
+            console.log(data.list[i]);
+          }
+        })
+        .fail(function (jqXhr, status, error) {
+          console.log(jqXhr);
+          console.log(status);
+          console.log(error);
+        });
+      console.log("hello");
+    </script>
+  </body>
+</html>

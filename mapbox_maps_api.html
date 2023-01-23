@@ -243,8 +243,8 @@
         loadRestaurants(restaurants);
 
         const fly = (targetRestaurant) => {
-          // <-- function sets the next restaurant to jump to on click
           map.flyTo({
+            // <-- flyto function sets the next restaurant to jump to on click
             ...targetRestaurant,
             duration: 12000,
             essential: true,
@@ -253,7 +253,7 @@
         console.log(mouseClicks);
 
         if (mouseClicks === 0) {
-          fly(restaurants[1].click1);
+          fly(restaurants[1].click1); // <-- flyto function called here
 
           mouseClicks = 1;
           console.log(mouseClicks);
@@ -267,6 +267,7 @@
       });
 
       $("#map").on("click", function () {
+        // <-- JQuery to display description and images on click
         html = "";
         if (mouseClicks === 1) {
           html += `
