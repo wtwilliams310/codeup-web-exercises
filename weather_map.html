@@ -6,11 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Bootstrap -->
-    <link
+    <!-- <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
       crossorigin="anonymous"
+    /> -->
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arizonia&display=swap"
+      rel="stylesheet"
     />
 
     <!-- Mapbox -->
@@ -31,18 +38,53 @@
       </div>
       <div class="container-content">
         <div class="container-search">
-          <form method="GET">
-            <label for="search" class="search">Places</label>
+          <form class="form" method="GET">
+            <label for="search" class="search">Pionts Of Interest</label>
             <input type="text" id="search" name="search" />
-            <input id="btn" type="submit" value="Submit" />
+            <input
+              id="btn"
+              type="submit"
+              value="Submit"
+              style="font-family: Arizonia, cursive"
+            />
           </form>
         </div>
-        <div class="container-cards">
-          <div class="cards card1"></div>
-          <div class="cards card2"></div>
-          <div class="cards card3"></div>
-          <div class="cards card4"></div>
-          <div class="cards card5"></div>
+        <div id="container-cards" class="container-cards">
+          <!-- <div class="cards card1">
+            <div class="temp">85&deg;F</div>
+            <div class="description">Partly cloudyF</div>
+            <div class="humidity">87.48&#37;</div>
+            <div class="wind">14mph</div>
+            <div class="pressure">29.81 inHg</div>
+          </div>
+          <div class="cards card2">
+            <div class="temp">85&deg;F</div>
+            <div class="description">Partly cloudyF</div>
+            <div class="humidity">87.48&#37;</div>
+            <div class="wind">14mph</div>
+            <div class="pressure">29.81 inHg</div>
+          </div>
+          <div class="cards card1">
+            <div class="temp">85&deg;F</div>
+            <div class="description">Partly cloudyF</div>
+            <div class="humidity">87.48&#37;</div>
+            <div class="wind">14mph</div>
+            <div class="pressure">29.81 inHg</div>
+          </div>
+          <div class="cards card1">
+            <div class="temp">85&deg;F</div>
+            <div class="description">Partly cloudyF</div>
+            <div class="humidity">87.48&#37;</div>
+            <div class="wind">14mph</div>
+            <div class="pressure">29.81 inHg</div>
+          </div>
+          <div class="cards card1">
+            <div class="temp">85&deg;F</div>
+            <div class="description">Partly cloudyF</div>
+            <div class="humidity">87.48&#37;</div>
+            <div class="wind">14mph</div>
+            <div class="pressure">29.81 inHg</div>
+          </div> -->
         </div>
         <div id="map"></div>
       </div>
@@ -55,11 +97,11 @@
     <script src="./js/key.js"></script>
 
     <!-- Bootstrap -->
-    <script
+    <!-- <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
       crossorigin="anonymous"
-    ></script>
+    ></script> -->
 
     <!-- Mapbox -->
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.js"></script>
@@ -88,13 +130,12 @@
     <script>
       "use strict";
 
-      const longAndLat = [];
-
       let marker = new mapboxgl.Marker();
 
       // Submit search value to weatherAPI
       $("#btn").on("click", function (e) {
         e.preventDefault();
+        const longAndLat = [];
 
         let city = "";
 
@@ -124,18 +165,59 @@
 
           fly(longAndLat);
 
+          //   marker.setLngLat(longAndLat).addTo(map);
           marker.setLngLat(longAndLat).addTo(map);
         });
+        let html = "";
 
-        fetch(
-          "http://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=" +
+        $.get(
+          "https://api.openweathermap.org/data/2.5/forecast?q=" +
+            city +
+            "&appid=" +
             keys.openWeather +
-            ""
+            "",
+          {
+            units: "imperial",
+          }
         )
-          .then((response) => response.json())
-          .then((data) => console.log(data))
+          .done(function (data) {
+            // lhtml = "";
+            let weather = "";
+            for (let i = 0; i < data.list.length; i += 8) {
+              if (
+                data.list[i].weather[0].id >= 503 &&
+                data.list[i].weather[0].id <= 531
+              ) {
+                weather = "rain";
+              } else if (data.list[i].weather[0].id < 502) {
+                weather = "light-rain-502";
+              } else if (data.list[i].weather[0].id === 800) {
+                weather = "clear-800";
+              } else if (data.list[i].weather[0].id === 804) {
+                weather = "overcast-2-804";
+              } else {
+                weather = "blank";
+              }
+              html += `<div class="cards card1 ${weather}">
+                <div class="temp">${data.list[i].main.temp}&deg;F</div>
+            <div class="humidity">${data.list[i].main.humidity}&#37;</div>
+            <div class="pressure">${data.list[i].main.pressure} inHg</div>
+            <div class="wind">${data.list[i].wind.speed}mph</div>
+            <div class="description ">${data.list[i].weather[0].description}</div>
+                    </div>`;
 
-          .catch((err) => alert("Wrong city name"));
+              //   console.log(data.list[i]);
+              console.log(weather);
+              console.log(data.list[i].weather[0].id);
+              console.log(data.list[i].weather[0].description);
+            }
+            $("#container-cards").html(html);
+          })
+          .fail(function (jqXhr, status, error) {
+            console.log(jqXhr);
+            console.log(status);
+            console.log(error);
+          });
 
         //   $.get("https://api.openweathermap.org/data/2.5/forecast", {
         //     lat: longAndLat[1],
@@ -154,39 +236,6 @@
         //       console.log(error);
         //     });
       });
-
-      // longAndLat = [];
-
-      //   <--- WeatherApp
-
-      //   $.get("https://api.openweathermap.org/data/2.5/forecast", {
-      //     lat: lat,
-      //     lon: long,
-      //     appid: keys.openWeather,
-      //     units: "imperial",
-      //   })
-      //     .done(function (data) {
-      //       for (let i = 0; i < data.list.length; i += 8) {
-      //         console.log(data);
-      //       }
-      //     })
-      //     .fail(function (jqXhr, status, error) {
-      //       console.log(jqXhr);
-      //       console.log(status);
-      //       console.log(error);
-      //     });
-
-      //   $.get("http://api.openweathermap.org/geo/1.0/direct", {
-      //     q: "london",
-      //     limit: 5,
-      //     appid: keys.openWeather,
-      //     // units: "imperial",
-      //   }).done(function (data) {
-      //     console.log(data);
-      //     // for (let i = 0; i < data.list.length; i += 8) {
-      //     // console.log(data.list[i]);
-      //     // }
-      //   });
     </script>
   </body>
 </html>

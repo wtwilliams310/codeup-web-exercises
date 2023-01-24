@@ -25,8 +25,54 @@ body {
 .container-header,
 .container-search,
 .container-cards {
-  /* border: 1px solid red; */
   display: flex;
+}
+
+.container-header {
+  background-color: #c8e7c1;
+  padding: 2rem 0;
+  margin: 1rem;
+  text-align: center;
+  border-radius: 10px;
+  font-family: "Arizonia", cursive;
+}
+.container-search {
+  font-family: "Arizonia", cursive;
+}
+.form {
+  margin-bottom: 10px;
+  display: inline-block;
+}
+
+#search {
+  padding: 5px;
+}
+
+.search {
+  color: #3491c0;
+  text-shadow: #fc0 1px 0 10px;
+  margin-top: 5px;
+  margin: 5rem 1.5rem 0 1.5rem;
+}
+
+#btn {
+  padding: 5px 8px;
+}
+.container-content {
+  margin-left: 1rem;
+
+  font-size: 2rem;
+}
+
+h1 {
+  text-align: center;
+  width: 100%;
+  font-size: 3.5rem;
+  opacity: 0.9;
+  color: #3491c0;
+  text-shadow: #fc0 1px 0 10px;
+
+  /* color: white; */
 }
 
 #map {
@@ -36,11 +82,53 @@ body {
 
 .container-cards {
   justify-content: space-evenly;
+  width: 100%;
+  height: 360px;
+  margin-bottom: 2rem;
+  /* background-image: url("../img/sunny.jpg"); */
+  /* background-repeat: no-repeat; */
+  /* background-size: cover; */
+  /* object-fit: ; */
   /* margin: 2rem 0; */
 }
+
 .cards {
+  /* background-image: url("../img/sunny.jpg"); */
+
   width: 200px;
   height: 300px;
-  border: 1px solid blue;
   margin: 2rem 0;
+  box-shadow: -30px 30px 20px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  border-radius: 10px;
+}
+
+/* .card2 {
+  background-image: url("../img/partly-cloudy.jpg");
+} */
+
+.rain {
+  background-image: url("../img/rain.jpg");
+  color: white;
+
+  /* opacity: 0.8; */
+}
+
+.light-rain-502 {
+  background-image: url("../img/light-rain.jpg");
+  color: white;
+}
+
+.clear-800 {
+  background-image: url("../img/clear.jpg");
+  /* opacity: 0.9; */
+}
+
+.overcast-2-804 {
+  background-image: url("../img/overcast-2.jpeg");
+}
+
+.blank {
+  background-image: url("../img/partly-cloudy.jpg");
+  /* opacity: 0.5; */
 }
