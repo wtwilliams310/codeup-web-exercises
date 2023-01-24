@@ -30,8 +30,20 @@
         <h1>Weather Map API</h1>
       </div>
       <div class="container-content">
-        <div class="container-search">Search</div>
-        <div class="container-cards">cards</div>
+        <div class="container-search">
+          <form method="GET">
+            <label for="search" class="search">Places</label>
+            <input type="text" id="search" name="search" />
+            <input id="btn" type="submit" value="Submit" />
+          </form>
+        </div>
+        <div class="container-cards">
+          <div class="cards card1"></div>
+          <div class="cards card2"></div>
+          <div class="cards card3"></div>
+          <div class="cards card4"></div>
+          <div class="cards card5"></div>
+        </div>
         <div id="map"></div>
       </div>
     </div>
@@ -57,11 +69,14 @@
     <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.min.js"></script> -->
 
     <script>
+      //   const longAndLat = [];
+
+      //   <--- Mapbox
       mapboxgl.accessToken = keys.mapbox;
       const map = new mapboxgl.Map({
         container: "map", // container ID
         style: "mapbox://styles/mapbox/streets-v12", // style URL
-        center: [-74.5, 40], // starting position [lng, lat]
+        center: [-98.490415, 29.4267], // starting position [lng, lat]
         zoom: 9, // starting zoom
       });
 
@@ -73,23 +88,105 @@
     <script>
       "use strict";
 
-      $.get("https://api.openweathermap.org/data/2.5/forecast", {
-        lat: 29.4252,
-        lon: -98.4916,
-        appid: keys.openWeather,
-        units: "imperial",
-      })
-        .done(function (data) {
-          for (let i = 0; i < data.list.length; i += 8) {
-            console.log(data.list[i]);
-          }
-        })
-        .fail(function (jqXhr, status, error) {
-          console.log(jqXhr);
-          console.log(status);
-          console.log(error);
+      const longAndLat = [];
+
+      let marker = new mapboxgl.Marker();
+
+      // Submit search value to weatherAPI
+      $("#btn").on("click", function (e) {
+        e.preventDefault();
+
+        let city = "";
+
+        city = $("#search").val();
+
+        $.get("http://api.openweathermap.org/geo/1.0/direct", {
+          q: city,
+          limit: 5,
+          appid: keys.openWeather,
+          // units: "imperial",
+        }).done(function (data) {
+          const lon = data[0].lon;
+          const lat = data[0].lat;
+          longAndLat.push(lon);
+          longAndLat.push(lat);
+          console.log(typeof data[0].lon, "type of data");
+          console.log(longAndLat);
+
+          const fly = (array) => {
+            map.flyTo({
+              // <-- flyto function sets the next restaurant to jump to on click
+              center: array,
+              duration: 12000,
+              essential: true,
+            });
+          };
+
+          fly(longAndLat);
+
+          marker.setLngLat(longAndLat).addTo(map);
         });
-      console.log("hello");
+
+        fetch(
+          "http://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=" +
+            keys.openWeather +
+            ""
+        )
+          .then((response) => response.json())
+          .then((data) => console.log(data))
+
+          .catch((err) => alert("Wrong city name"));
+
+        //   $.get("https://api.openweathermap.org/data/2.5/forecast", {
+        //     lat: longAndLat[1],
+        //     lon: longAndLat[0],
+        //     appid: keys.openWeather,
+        //     units: "imperial",
+        //   })
+        //     .done(function (data) {
+        //       for (let i = 0; i < data.list.length; i += 8) {
+        //         console.log(data);
+        //       }
+        //     })
+        //     .fail(function (jqXhr, status, error) {
+        //       console.log(jqXhr);
+        //       console.log(status);
+        //       console.log(error);
+        //     });
+      });
+
+      // longAndLat = [];
+
+      //   <--- WeatherApp
+
+      //   $.get("https://api.openweathermap.org/data/2.5/forecast", {
+      //     lat: lat,
+      //     lon: long,
+      //     appid: keys.openWeather,
+      //     units: "imperial",
+      //   })
+      //     .done(function (data) {
+      //       for (let i = 0; i < data.list.length; i += 8) {
+      //         console.log(data);
+      //       }
+      //     })
+      //     .fail(function (jqXhr, status, error) {
+      //       console.log(jqXhr);
+      //       console.log(status);
+      //       console.log(error);
+      //     });
+
+      //   $.get("http://api.openweathermap.org/geo/1.0/direct", {
+      //     q: "london",
+      //     limit: 5,
+      //     appid: keys.openWeather,
+      //     // units: "imperial",
+      //   }).done(function (data) {
+      //     console.log(data);
+      //     // for (let i = 0; i < data.list.length; i += 8) {
+      //     // console.log(data.list[i]);
+      //     // }
+      //   });
     </script>
   </body>
 </html>
