@@ -4,6 +4,10 @@
   padding: 0;
 }
 
+#hidden {
+  /* display: none; */
+}
+
 body {
   font-family: "Open Sans", sans-serif;
   font-size: 16px;
@@ -30,33 +34,48 @@ body {
 
 .container-header {
   background-color: #c8e7c1;
-  padding: 2rem 0;
+  /* padding: 1rem 0; */
   margin: 1rem;
   text-align: center;
   border-radius: 10px;
   font-family: "Arizonia", cursive;
+  box-shadow: -20px 20px 10px rgba(0, 0, 0, 0.3);
 }
 .container-search {
   font-family: "Arizonia", cursive;
 }
 .form {
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   display: inline-block;
 }
 
 #search {
   padding: 5px;
+  font-size: 1.5rem;
+  border: 3px solid #ccc;
+  border-radius: 5px;
 }
 
 .search {
-  color: #3491c0;
-  text-shadow: #fc0 1px 0 10px;
+  /* color: #3491c0; */
+  text-shadow: #f4a859 1px 0 10px;
   margin-top: 5px;
   margin: 5rem 1.5rem 0 1.5rem;
+  font-size: 2.5rem;
+}
+
+input[type="text"]:focus {
+  background-color: #3491c0;
+  color: white;
 }
 
 #btn {
-  padding: 5px 8px;
+  margin: auto;
+  padding: 4px 14px;
+  font-size: 1.5rem;
+  background-color: #f1c494;
+  border-radius: 5px;
+  text-shadow: #f4a859 1px 0 10px;
 }
 .container-content {
   margin-left: 1rem;
@@ -64,18 +83,23 @@ body {
   font-size: 2rem;
 }
 
+#btn:hover {
+  cursor: pointer;
+}
+
 h1 {
   text-align: center;
   width: 100%;
-  font-size: 3.5rem;
+  font-size: 4rem;
   opacity: 0.9;
-  color: #3491c0;
-  text-shadow: #fc0 1px 0 10px;
+  /* color: #3491c0; */
+  text-shadow: #f4a859 1px 0 10px;
 
   /* color: white; */
 }
 
 #map {
+  position: relative;
   width: 100%;
   height: 400px;
 }
@@ -83,13 +107,8 @@ h1 {
 .container-cards {
   justify-content: space-evenly;
   width: 100%;
-  height: 360px;
-  margin-bottom: 2rem;
-  /* background-image: url("../img/sunny.jpg"); */
-  /* background-repeat: no-repeat; */
-  /* background-size: cover; */
-  /* object-fit: ; */
-  /* margin: 2rem 0; */
+  height: 350px;
+  margin-bottom: 1rem;
 }
 
 .cards {
@@ -97,7 +116,7 @@ h1 {
 
   width: 200px;
   height: 300px;
-  margin: 2rem 0;
+  margin: 1rem 0 2rem 0;
   box-shadow: -30px 30px 20px rgba(0, 0, 0, 0.3);
   text-align: center;
   border-radius: 10px;
@@ -128,7 +147,26 @@ h1 {
   background-image: url("../img/overcast-2.jpeg");
 }
 
+.snow {
+  background-image: url("../img/snow.jpg");
+}
+
 .blank {
   background-image: url("../img/partly-cloudy.jpg");
   /* opacity: 0.5; */
+}
+
+.coordinates {
+  background: rgba(0, 0, 0, 0.3);
+  color: #fff;
+  position: absolute;
+  bottom: 105px;
+  left: 10px;
+  padding: 5px 10px;
+  margin: 0.5rem 0 0 0.75rem;
+  font-size: 11px;
+  line-height: 18px;
+  border-radius: 3px;
+  display: none;
+  /* margin-left: 1rem; */
 }
