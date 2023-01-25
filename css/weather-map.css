@@ -4,10 +4,6 @@
   padding: 0;
 }
 
-#hidden {
-  /* display: none; */
-}
-
 body {
   font-family: "Open Sans", sans-serif;
   font-size: 16px;
@@ -27,23 +23,23 @@ body {
 }
 
 .container-header,
-.container-search,
-.container-cards {
+.container-search {
   display: flex;
 }
 
 .container-header {
   background-color: #c8e7c1;
-  /* padding: 1rem 0; */
   margin: 1rem;
   text-align: center;
   border-radius: 10px;
   font-family: "Arizonia", cursive;
   box-shadow: -20px 20px 10px rgba(0, 0, 0, 0.3);
 }
+
 .container-search {
   font-family: "Arizonia", cursive;
 }
+
 .form {
   margin-bottom: 5px;
   display: inline-block;
@@ -57,7 +53,6 @@ body {
 }
 
 .search {
-  /* color: #3491c0; */
   text-shadow: #f4a859 1px 0 10px;
   margin-top: 5px;
   margin: 5rem 1.5rem 0 1.5rem;
@@ -65,8 +60,9 @@ body {
 }
 
 input[type="text"]:focus {
-  background-color: #3491c0;
-  color: white;
+  background-color: #cee9c8;
+  opacity: 0.5;
+  color: black;
 }
 
 #btn {
@@ -79,12 +75,13 @@ input[type="text"]:focus {
 }
 .container-content {
   margin-left: 1rem;
-
+  margin-right: 1rem;
   font-size: 2rem;
 }
 
 #btn:hover {
   cursor: pointer;
+  background-color: #f2e0cc;
 }
 
 h1 {
@@ -92,10 +89,7 @@ h1 {
   width: 100%;
   font-size: 4rem;
   opacity: 0.9;
-  /* color: #3491c0; */
   text-shadow: #f4a859 1px 0 10px;
-
-  /* color: white; */
 }
 
 #map {
@@ -105,32 +99,48 @@ h1 {
 }
 
 .container-cards {
+  display: flex;
   justify-content: space-evenly;
   width: 100%;
   height: 350px;
   margin-bottom: 1rem;
+
+  overflow: hidden; /* Hide the element content, while height = 0 */
+  height: 0;
+  opacity: 0;
+  transition: height 0ms 400ms, opacity 400ms 0ms;
 }
 
 .cards {
-  /* background-image: url("../img/sunny.jpg"); */
-
   width: 200px;
   height: 300px;
   margin: 1rem 0 2rem 0;
-  box-shadow: -30px 30px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: -20px 20px 20px rgba(0, 0, 0, 0.3);
   text-align: center;
   border-radius: 10px;
+  font-size: 1.25rem;
+  border: 5px solid #c8e7c1;
 }
 
-/* .card2 {
-  background-image: url("../img/partly-cloudy.jpg");
-} */
+.weather-info {
+  margin-top: 1rem;
+}
+
+.titles {
+  font-size: 1.25rem;
+  font-family: "Arizonia", cursive;
+  font-weight: bold;
+  text-shadow: #f4a859 1px 0 10px;
+}
+
+input[type="text"] {
+  font-family: "Arizonia", cursive;
+  font-size: 24px;
+}
 
 .rain {
   background-image: url("../img/rain.jpg");
   color: white;
-
-  /* opacity: 0.8; */
 }
 
 .light-rain-502 {
@@ -140,7 +150,6 @@ h1 {
 
 .clear-800 {
   background-image: url("../img/clear.jpg");
-  /* opacity: 0.9; */
 }
 
 .overcast-2-804 {
@@ -153,7 +162,6 @@ h1 {
 
 .blank {
   background-image: url("../img/partly-cloudy.jpg");
-  /* opacity: 0.5; */
 }
 
 .coordinates {
@@ -168,5 +176,4 @@ h1 {
   line-height: 18px;
   border-radius: 3px;
   display: none;
-  /* margin-left: 1rem; */
 }
