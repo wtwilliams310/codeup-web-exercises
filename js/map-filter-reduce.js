@@ -119,13 +119,15 @@ const users = [
 
 // MY-SOLUTION 6
 
-// const authorString = users.reduce(function (prevVal, currVal, idx) {
-//   return idx == 0 ? currVal.name : prevVal + ", " + currVal.name;
-// }, "");
+const authorString = users.reduce(function (prevVal, currVal, idx) {
+  return idx == 0 ? prevVal + currVal.name : prevVal + ", " + currVal.name;
+}, "Your instructors are ");
+
+console.log(authorString);
 
 // let message = `Your instructors are ${authorString}.`;
 
-// console.log(authorString);
+// console.log(message);
 
 // 2nd attempt
 // const usersNames = users.reduce
